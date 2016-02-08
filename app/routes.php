@@ -21,3 +21,6 @@ Route::get('/producto', function()
 	$products=Product::paginate(10);
 	return View::make('index')->with('products',$products);
 });
+
+Route::resource('products', 'DataController');
+Route::get('api/producto', array('as'=>'api.producto', 'uses'=>'DataController@getDatatable'));
