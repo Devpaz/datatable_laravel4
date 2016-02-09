@@ -16,11 +16,12 @@ Route::get('/', function()
 	return View::make('hello');
 });
 
-Route::get('/producto', function()
-{
-	$products=Product::paginate(10);
-	return View::make('index')->with('products',$products);
-});
+Route::get('/producto', 'DataController@getProducto');
+Route::get('/ajax/producto','DataController@getAjax');
+
+
+
+Route::get('/producto2', 'DataController@getProducto2');
 
 Route::resource('products', 'DataController');
 Route::get('api/producto', array('as'=>'api.producto', 'uses'=>'DataController@getDatatable'));
